@@ -2,7 +2,9 @@
 name = "mkp-forge"
 version = "0.0.1"
 description = "This is a tool to build mkp packages directly without the need of checkmk installed."
-authors = [{ name = "Matti Kaupenjohann", email = "matti.kaupenjohann@fh-dortmund.de" }]
+authors = [
+    { name = "Matti Kaupenjohann", email = "matti.kaupenjohann@fh-dortmund.de" },
+]
 readme = "README.md"
 keywords = ['python']
 requires-python = ">=3.10,<4.0"
@@ -17,9 +19,7 @@ classifiers = [
     "Programming Language :: Python :: 3.14",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
-dependencies = [
-    "pydantic>=2.14.0",
-]
+dependencies = ["pydantic>=2.14.0"]
 
 [project.urls]
 Homepage = "https://makanu.github.io/mkp-forge/"
@@ -79,7 +79,8 @@ select = [
     # mccabe
     "C90",
     # pycodestyle
-    "E", "W",
+    "E",
+    "W",
     # pyflakes
     "F",
     # pygrep-hooks
