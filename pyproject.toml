@@ -39,6 +39,7 @@ dev = [
     "ruff>=0.15.7",
     "zensical>=0.0.26",
     "mkdocstrings-python>=1.0.3",
+    "hypothesis>=6.168.5",
 ]
 
 [build-system]
