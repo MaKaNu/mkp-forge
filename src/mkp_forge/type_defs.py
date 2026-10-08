@@ -81,10 +81,12 @@ class PackageVersion(str):
         version, prerelease = (
             without_build_metadata.split("-", 1) if "-" in without_build_metadata else (without_build_metadata, "")
         )
+        end_marker: _SortKeyElement = (2, None)
+
         return (
             tuple(convert_identifiers(version))
             + (tuple(convert_identifiers(prerelease)) if prerelease else ())
-            + ((2, None),)
+            + (end_marker,)
         )
 
 
