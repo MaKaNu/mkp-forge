@@ -6,7 +6,7 @@ from collections.abc import Mapping, Sequence
 from pathlib import Path
 from typing import Self
 
-from pydantic import BaseModel, ConfigDict, Field, ValidationError
+from pydantic import BaseModel, ConfigDict, Field
 
 from mkp_forge.type_defs import PackageID, PackageName, PackageVersion
 
@@ -78,12 +78,5 @@ class Manifest(BaseModel):
         return PackageID(name=self.name, version=self.version)
 
 
-def read_manifest(manifest_path: Path) -> Manifest | None:
-    try:
-        return Manifest.parse_python_string(manifest_path.read_text())
-    except (OSError, SyntaxError, TypeError, ValueError, ValidationError):
-        _logger.exception(
-            "[%(manifest_path)s]: Failed to read package manifest",
-            {"manifest_path": manifest_path},
-        )
-    return None
+def read_manifest(manifest_path: Path) -> Manifest:
+    return Manifest.parse_python_string(manifest_path.read_text())
