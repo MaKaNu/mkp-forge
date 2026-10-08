@@ -97,6 +97,8 @@ ignore = [
     "E501",
     # DoNotAssignLambda
     "E731",
+    # LongErrorMessage
+    "TRY003",
 ]
 
 [tool.ruff.lint.per-file-ignores]
