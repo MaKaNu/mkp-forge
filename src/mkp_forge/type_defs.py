@@ -1,6 +1,4 @@
 import re
-from collections.abc import Iterable
-from functools import cached_property
 from typing import Literal, Self
 
 from pydantic import BaseModel, ConfigDict, GetCoreSchemaHandler, field_validator
@@ -54,39 +52,6 @@ class PackageVersion(str):
             cls.validate,
             core_schema.str_schema(),
             serialization=core_schema.to_string_ser_schema(),
-        )
-
-    @classmethod
-    def parse_semver(cls, raw: str) -> Self:
-        if cls._SEMVER_PATTERN.match(raw):
-            return cls(raw)
-        raise ValueError(f"Not a valid semantic versioning string: {raw!r}")
-
-    @cached_property
-    def sort_key(self) -> tuple[_SortKeyElement, ...]:
-        """Try our best to sort version strings
-
-        This should be compatible with the spec for semantic versioning (semver.org).
-        """
-
-        def convert_identifiers(ids: str) -> Iterable[_SortKeyElement]:
-            for i in ids.split("."):
-                try:
-                    yield (1, int(i))
-                except ValueError:
-                    yield (0, i)
-
-        without_build_metadata = self.split("+", 1)[0]
-
-        version, prerelease = (
-            without_build_metadata.split("-", 1) if "-" in without_build_metadata else (without_build_metadata, "")
-        )
-        end_marker: _SortKeyElement = (2, None)
-
-        return (
-            tuple(convert_identifiers(version))
-            + (tuple(convert_identifiers(prerelease)) if prerelease else ())
-            + (end_marker,)
         )
 
 
