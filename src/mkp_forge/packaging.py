@@ -5,7 +5,7 @@ from collections.abc import Iterable
 from io import BytesIO
 from pathlib import Path
 
-from mkp_forge.manifest import Manifest, read_manifest
+from mkp_forge.manifest import Manifest
 
 _logger = logging.getLogger(__name__)
 
@@ -68,9 +68,3 @@ def create_tar(name: str, dest: Path, filenames: Iterable[Path]) -> tuple[str, b
             _logger.debug("    %(file)s", {"file": f})
             tar.add(dest / f, arcname=f.as_posix())
     return tarname, buffer.getvalue()
-
-
-if __name__ == "__main__":
-    project_path = Path("tests/data/good/dummy_mkp_project")
-    manifest = read_manifest(project_path / "info_basic")
-    write_mkp(manifest, create_mkp(manifest, project_path))
