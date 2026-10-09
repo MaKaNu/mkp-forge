@@ -1,1 +1,2 @@
-::: mkp_forge.foo
+::: mkp_forge.manifest
+::: mkp_forge.packaging
