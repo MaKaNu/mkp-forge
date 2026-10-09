@@ -10,7 +10,7 @@ from pydantic import ValidationError
 
 from mkp_forge.manifest import Manifest, read_manifest
 
-GOOD_FILE = Path(__file__).parent / "data" / "good" / "info_basic"
+GOOD_FILE = Path(__file__).parent / "data/good/dummy_mkp_project/info_basic"
 GOOD_RAW = ast.literal_eval(GOOD_FILE.read_text())
 
 # ValidationError and UnicodeDecodeError are ValueError subclasses; listed for clarity.
