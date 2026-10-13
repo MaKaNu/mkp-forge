@@ -21,4 +21,4 @@ def main(ctx: typer.Context, verbose: bool = typer.Option(False, "--verbose", "-
 
 
 if __name__ == "__main__":
-    app()
+    app()  # pragma: no cover
