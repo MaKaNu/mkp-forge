@@ -6,68 +6,49 @@
 [![Commit activity](https://img.shields.io/github/commit-activity/m/makanu/mkp-forge)](https://img.shields.io/github/commit-activity/m/makanu/mkp-forge)
 [![License](https://img.shields.io/github/license/makanu/mkp-forge)](https://img.shields.io/github/license/makanu/mkp-forge)
 
-This is a tool to build mkp packages directly without tall the checkmk.
+This is a tool to build mkp packages directly without the need to install checkmk.
 
 - **Github repository**: <https://github.com/makanu/mkp-forge/>
 - **Documentation** <https://makanu.github.io/mkp-forge/>
 
-## Getting started with your project
+most of the library code is based on the checkmk mkp tool code.
 
-### 1. Create a New Repository
+> Currently only building packages is supported. Refer for [Planned Features](#planned-features) for further information.
 
-First, create a repository on GitHub with the same name as this project, and then run the following commands:
+## Quick Reference
 
-```bash
-git init -b main
-git add .
-git commit -m "init commit"
-git remote add origin git@github.com:makanu/mkp-forge.git
-git push -u origin main
-```
+> Read [Documentation](https://makanu.github.io/mkp-forge/) for detailed getting started.
 
-### 2. Set Up Your Development Environment
-
-Then, install the environment and the pre-commit hooks with
+### Inatall
 
 ```bash
-make install
+# as tool
+uvx mkp-forge --help
+
+# inside project
+uv add mkp-forge
 ```
 
-This will also generate your `uv.lock` file
-
-### 3. Run the pre-commit hooks
-
-Initially, the CI/CD pipeline might be failing due to formatting issues. To resolve those run:
+### Usage
 
 ```bash
-uv run pre-commit run -a
+# build a mkp package
+mkp-forge package build -i <mkp-info> -p <package-project>
 ```
 
-### 4. Commit the changes
-
-Lastly, commit the changes made by the two steps above to your repository.
-
-```bash
-git add .
-git commit -m 'Fix formatting issues'
-git push origin main
-```
-
-You are now ready to start development on your project!
-The CI/CD pipeline will be triggered when you open a pull request, merge to main, or when you create a new release.
-
-To finalize the set-up for publishing to PyPI, see [here](https://fpgmaas.github.io/cookiecutter-uv/features/publishing/#set-up-for-pypi).
-For activating the automatic documentation with MkDocs/Zensical, see [here](https://fpgmaas.github.io/cookiecutter-uv/features/docs_tool/#deploying-to-github-pages).
-To enable the code coverage reports, see [here](https://fpgmaas.github.io/cookiecutter-uv/features/codecov/).
 
 ## Releasing a new version
 
-- Create an API Token on [PyPI](https://pypi.org/).
-- Add the API Token to your projects secrets with the name `PYPI_TOKEN` by visiting [this page](https://github.com/makanu/mkp-forge/settings/secrets/actions/new).
 - Create a [new release](https://github.com/makanu/mkp-forge/releases/new) on Github.
 - Create a new tag in the form `*.*.*`.
 
 For more details, see [here](https://fpgmaas.github.io/cookiecutter-uv/features/cicd/#how-to-trigger-a-release).
+
+## Planned Features
+
+- Version Validation
+- Publishing? (Does checkmk exchange allows api uploads?)
+- Templating (via other repos)
 
 ---
 

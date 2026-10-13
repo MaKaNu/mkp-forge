@@ -1,7 +1,7 @@
 [project]
 name = "mkp-forge"
 version = "0.0.1"
-description = "This is a tool to build mkp packages directly without the need of checkmk installed."
+description = "This is a tool to build mkp packages directly without the need to install checkmk."
 authors = [
     { name = "Matti Kaupenjohann", email = "matti.kaupenjohann@fh-dortmund.de" },
 ]
