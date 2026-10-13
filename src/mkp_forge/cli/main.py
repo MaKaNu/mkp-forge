@@ -4,7 +4,7 @@ from mkp_forge.cli import package
 
 app = typer.Typer(help="An implementation of standalone mkp package building.", add_completion=True)
 
-app.add_typer(package.app, name="package", help="build package based on mkp info file.")
+app.add_typer(package.app, name="package", help="MKP package tasks.")
 
 
 @app.callback()
