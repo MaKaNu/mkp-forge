@@ -1,6 +1,12 @@
 from pathlib import Path
 
 import typer
+from rich.console import Console
+
+from mkp_forge.manifest import read_manifest
+from mkp_forge.packaging import create_mkp, write_mkp
+
+err_console = Console(stderr=True)
 
 app = typer.Typer(help="Package management commands.")
 
@@ -26,5 +32,18 @@ def create_package(ctx: typer.Context, mkp_info: Path = BUILD_MKP_INFO, mkp_proj
         mkp_info = mkp_project.resolve() / f"{project_name}.info"
 
     if verbose:
-        print(f"Packaging Project '{mkp_project}' with '{mkp_info}'.")
         typer.secho(f"Packaging Project '{mkp_project}' with '{mkp_info}'.", fg=typer.colors.GREEN)
+
+    try:
+        manifest = read_manifest(mkp_info)
+    except FileNotFoundError as e:
+        err_console.print(f"MKP manifest info file {e.filename} not Found!")
+        raise typer.Exit(code=1) from e
+    try:
+        mkp_bytes = create_mkp(manifest, mkp_project)
+    except FileNotFoundError as e:
+        err_console.print(
+            f"Selected MKP project directory '{mkp_project}' incompatible with paths of info file '{mkp_info}'!"
+        )
+        raise typer.Exit(code=1) from e
+    write_mkp(manifest, mkp_bytes)
