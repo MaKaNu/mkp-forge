@@ -10,6 +10,9 @@ from pydantic import ValidationError
 
 from mkp_forge.manifest import Manifest, read_manifest
 
+# Corrupted input can contain invalid escapes (e.g. '\l'); the parser warns, that's expected.
+pytestmark = pytest.mark.filterwarnings("ignore::SyntaxWarning")
+
 GOOD_FILE = Path(__file__).parent / "data/good/dummy_mkp_project/info_basic"
 GOOD_RAW = ast.literal_eval(GOOD_FILE.read_text())
 

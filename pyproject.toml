@@ -1,7 +1,7 @@
 [project]
 name = "mkp-forge"
 version = "0.0.1"
-description = "This is a tool to build mkp packages directly without the need of checkmk installed."
+description = "This is a tool to build mkp packages directly without the need to install checkmk."
 authors = [
     { name = "Matti Kaupenjohann", email = "matti.kaupenjohann@fh-dortmund.de" },
 ]
@@ -18,7 +18,16 @@ classifiers = [
     "Programming Language :: Python :: 3.14",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
-dependencies = ["pydantic>=2.14.0", "pydantic-core>=2.50.0"]
+
+dependencies = [
+    "pydantic>=2.14.0",
+    "pydantic-core>=2.50.0",
+    "rich>=15.0.0",
+    "typer>=0.27.3",
+]
+
+[project.scripts]
+mkp-forge = "mkp_forge.cli.main:app"
 
 [project.urls]
 Homepage = "https://makanu.github.io/mkp-forge/"

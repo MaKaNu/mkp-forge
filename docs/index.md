@@ -5,4 +5,24 @@
 [![Commit activity](https://img.shields.io/github/commit-activity/m/makanu/mkp-forge)](https://img.shields.io/github/commit-activity/m/makanu/mkp-forge)
 [![License](https://img.shields.io/github/license/makanu/mkp-forge)](https://img.shields.io/github/license/makanu/mkp-forge)
 
-This is a tool to build mkp packages directly without tall the checkmk.
+This is a tool to build mkp packages directly without the need to install the checkmk.
+
+## Inatall
+
+```bash
+# as tool
+uvx mkp-forge --help
+
+# inside project
+uv add mkp-forge
+
+# plain pip
+pip install mkp-forge
+```
+
+## Usage
+
+```bash
+# build a mkp package
+mkp-forge package build -i <mkp-info> -p <package-project>
+```
