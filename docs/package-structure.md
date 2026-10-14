@@ -1,12 +1,21 @@
 # Structure of a mkp package
 
-This Section describes the based on version/version-range how the package project needs to be structured.
+This Section describes the based on version/version-range how the package project
+needs to be structured.
 
-Naming conventions are recommended but not mandatory and could be controlled via cli.
+The Structure is the result of a combination of default python package
+development in context to how check builds the
+[mkp_tool](https://github.com/Checkmk/checkmk/tree/master/packages/cmk-mkp-tool)
+internally.
 
-The info file does not only provides the necessary info for the checkmk tool it is also used for validation.
+Naming conventions are recommended but not mandatory and
+could be controlled via cli.
+
+The info file does not only provides the necessary info for the checkmk tool it
+is also used for validation.
 The files section need to match file structure.
-With this strucute it is possible to create local library tests while matching the expected checkmk plugin structure.
+With this strucute it is possible to create local library tests while matching
+the expected checkmk plugin structure.
 This allows creating complex server site plugins.
 
 ## 2.5.0p6 based

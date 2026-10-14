@@ -9,15 +9,20 @@ This is a tool to build mkp packages directly without the need to install the ch
 
 ## Inatall
 
+### with `pip`
+
+```bash
+pip install mkp-forge
+```
+
+### with `uv`
+
 ```bash
 # as tool
 uvx mkp-forge --help
 
 # inside project
 uv add mkp-forge
-
-# plain pip
-pip install mkp-forge
 ```
 
 ## Usage

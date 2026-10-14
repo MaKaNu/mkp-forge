@@ -19,7 +19,15 @@ most of the library code is based on the checkmk mkp tool code.
 
 > Read [Documentation](https://makanu.github.io/mkp-forge/) for detailed getting started.
 
-### Inatall
+### Install
+
+#### with `pip`
+
+```bash
+pip install mkp-forge
+```
+
+#### with `uv`
 
 ```bash
 # as tool
@@ -35,7 +43,6 @@ uv add mkp-forge
 # build a mkp package
 mkp-forge package build -i <mkp-info> -p <package-project>
 ```
-
 
 ## Releasing a new version
 
